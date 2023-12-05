@@ -21,12 +21,16 @@ img {
   padding: 10px;
   background-color: #4a4a4a;
   text-align: left;
-  color: #c3f04c;
+  color: #ddd;
   font-size: 30px;
   padding-left: 30px;
   border: 1px solid #ddd;
 }
 
+
+.accordion-title.active {
+  color: #c3f04c;
+}
 
 
 .accordion-content {
