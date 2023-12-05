@@ -1,7 +1,7 @@
 * {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -12,18 +12,18 @@ img {
   display: block;
   max-width: 100%;
 }
- ul {
-   list-style: none;
- }
+ul {
+  list-style: none;
+}
 
 .container {
   padding-top: 50px;
-   margin: 0 auto;
-   width: 800px;
+  margin: 0 auto;
+  width: 800px;
 }
 
 .accordion__container {
-   margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
 .accordion-title {
@@ -38,11 +38,9 @@ img {
   border: 1px solid #ddd;
 }
 
-
 .accordion-title.active {
   color: #c3f04c;
 }
-
 
 .accordion-content {
   display: none;
@@ -54,11 +52,9 @@ img {
   padding-bottom: 20px;
 }
 
-
-
 .icon {
   position: absolute;
-  top:10px;
+  top: 10px;
   left: -20px;
   display: flex;
   justify-content: center;
@@ -66,35 +62,30 @@ img {
   background-color: #c3f04c;
   font-size: 25px;
   border: none;
-  width:30px;
-  height:30px;
+  width: 30px;
+  height: 30px;
   border-radius: 5px;
 }
 
-
 .skillbar__list {
-   display: flex;
-   gap: 30px;
-   color: #ddd;
+  display: flex;
+  gap: 30px;
+  color: #ddd;
 }
-
-
-
 
 .skillbar__title {
   text-align: center;
   width: 140px;
   font-size: 16px;
- padding: 5px 15px;
- border-radius: 25px;
- border: 1px solid #ddd;
- margin: 10px auto ;
-
+  padding: 5px 15px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  margin: 30px auto;
 }
 
 .skillbar__text {
-   text-align: center;
-   font-size: 14px;
+  text-align: center;
+  font-size: 14px;
 }
 
 .skillbar__wrap {
@@ -102,7 +93,6 @@ img {
   align-items: flex-end;
   justify-content: center;
 }
-
 
 .skillbar {
   --percentage: 0;
@@ -112,17 +102,20 @@ img {
   border-radius: 50% / 100% 100% 0 0;
   position: relative;
   overflow: hidden;
-
 }
 
 .skillbar::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: conic-gradient(from 0.75turn at 50% 100%, #c3f04c calc(var(--percentage) * 1% / 2), rgb(95, 97, 99) calc(var(--percentage) * 1% / 2 + 0.1%));
+  background: conic-gradient(
+    from 0.75turn at 50% 100%,
+    var(--color) calc(var(--percentage) * 1% / 2),
+    rgb(95, 97, 99) calc(var(--percentage) * 1% / 2 + 0.1%)
+  );
   mask: radial-gradient(at 50% 100%, white 55%, transparent 55.5%);
   mask-mode: alpha;
   -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 55.5%);

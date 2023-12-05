@@ -1,30 +1,51 @@
-import { populateContainerWithData } from "./index.js";
+import { populateContainerWithData } from './index.js';
 
- const skillbarData = [
-  { percent: "75%", value: 75, title: "New Visitors", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { percent: "90%", value: 90, title: "Social Media", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { percent: "60%", value: 60, title: "Referrals", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { percent: "80%", value: 80, title: "Search Engines", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+const skillbarData = [
+  {
+    value: 75,
+    title: 'New Visitors',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    value: 90,
+    title: 'Social Media',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    value: 60,
+    title: 'Referrals',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    value: 80,
+    title: 'Search Engines',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
 ];
 
- function createSkillbarItem(data) {
-  const {percent, value, title, text} = data;
+function createSkillbarItem(data) {
+  const { value, title, text } = data;
+  const color = getColorBasedOnValue(value);
 
-    const li = $('<li class="skillbar__item" data-percent="' + percent + '"></li>');
-    const wrapEl = $('<div class="skillbar__wrap"></div>');
-    const skillbarEl = $('<div class="skillbar" data-value="' + value + '"></div>');
-    const percentEl = $('<div class="skillbar__percent"></div>');
-    const titleEl = $('<p class="skillbar__title">' + title + '</p>');
-    const textEl = $('<p class="skillbar__text">' + text + '</p>');
-
-    wrapEl.append(skillbarEl, percentEl);
-    li.append(wrapEl, titleEl, textEl);
-
+  const li = $(`
+          <li class="skillbar__item" data-percent="${value}%">
+            <div class="skillbar__wrap">
+              <div class="skillbar" data-value="${value}" style="--color: ${color};"></div>
+              <div class="skillbar__percent"></div>
+            </div>
+            <p class="skillbar__title">${title}</p>
+            <p class="skillbar__text">${text}</p>
+          </li>
+        `);
   return li;
 }
 
 export function populateSkillbar(containerSelector) {
-  populateContainerWithData(skillbarData, createSkillbarItem, containerSelector);
+  populateContainerWithData(
+    skillbarData,
+    createSkillbarItem,
+    containerSelector,
+  );
 
   $('.skillbar__item').each(function () {
     const skillbarItem = $(this);
@@ -34,7 +55,7 @@ export function populateSkillbar(containerSelector) {
 
     animateSkillbar(skillbar, value);
   });
-} 
+}
 
 function animateSkillbar(skillbar, value) {
   skillbar.animate(
@@ -49,7 +70,25 @@ function animateSkillbar(skillbar, value) {
       },
       complete: function () {
         skillbar.css('animation', '');
-      }
-    }
+      },
+    },
   );
+}
+
+function getColorBasedOnValue(value) {
+  let color;
+  switch (true) {
+    case value < 65:
+      color = '#ec4d52';
+      break;
+    case value >= 65 && value <= 75:
+      color = '#29aadc';
+      break;
+    case value > 75 && value < 85:
+      color = '#fec25a';
+      break;
+    default:
+      color = '#89cf7e';
+  }
+  return color;
 }
