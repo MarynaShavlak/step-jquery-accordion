@@ -1,1 +1,1 @@
-# step-jquery-accordion
+# jQuery (Accordion and Progress Bar)
